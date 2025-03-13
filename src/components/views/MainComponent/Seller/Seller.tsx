@@ -99,7 +99,7 @@ const SellerCard = () => {
           <Button
             variant="contained"
             color="error"
-            sx={{ borderRadius: 2, fontSize: "14px", textTransform: "none" }}
+            sx={{ fontSize: "14px", textTransform: "none" }}
             onClick={() => navigate("/")}
           >
             {locale.allProductsButton}
@@ -110,7 +110,6 @@ const SellerCard = () => {
             sx={{
               backgroundColor: "#FFDADA",
               color: "red",
-              borderRadius: 2,
               fontSize: "14px",
               textTransform: "none",
             }}

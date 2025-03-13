@@ -19,9 +19,9 @@ const Home: FC = observer(() => {
   }
 
   return (
-    <>
+    <Box sx={{background: (theme) => theme.palette.background.default}}> 
       <Header />
-      <Container maxWidth="md">
+      <Container maxWidth="md" sx={{color: (theme) => theme.palette.text.primary}}>
         <Box
           component="ul"
           sx={{
@@ -41,7 +41,7 @@ const Home: FC = observer(() => {
         </Box>
       </Container>
       ;
-    </>
+    </Box>
   );
 });
 

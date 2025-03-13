@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import {
   Box,
   Stack,
@@ -36,18 +36,25 @@ interface SidebarProps {
 }
 
 const Sidebar: FC<SidebarProps> = ({ open, onClose }) => {
-  const [darkMode, setDarkMode] = useState(false);
-  const [langModalOpen, setLangModalOpen] = useState(false);
   const locale = useLocale(Locale);
-
-  const toggleDarkMode = () => {
-    setDarkMode((prev) => !prev);
+  const [langModalOpen, setLangModalOpen] = useState(false);
+  
+  const getSavedTheme = () => {
+    return localStorage.getItem("theme") || "light";
   };
 
-  // const changeLanguage = (lang: string) => {
-  //   console.log("Selected language:", lang);
-  //   setLangModalOpen(false);
-  // };
+  const [darkMode, setDarkMode] = useState<"light" | "dark">(getSavedTheme() as "light" | "dark");
+
+  const toggleDarkMode = () => {
+    const newMode = darkMode === "light" ? "dark" : "light";
+    setDarkMode(newMode);
+    localStorage.setItem("theme", newMode);
+    window.location.reload()
+  };
+
+  useEffect(() => {
+    setDarkMode(getSavedTheme() as "light" | "dark");
+  }, []);
 
   const menuItems = [
     { text: locale.orders, icon: <ShoppingBagIcon /> },
@@ -69,7 +76,7 @@ const Sidebar: FC<SidebarProps> = ({ open, onClose }) => {
       <Drawer anchor="left" open={open} onClose={onClose} sx={{
         "& .MuiDrawer-paper": { width: 300, overflowX: "hidden" },
       }}>
-        <Box sx={{ width: "100%", bgcolor: "#F5F6F8", p: 2 }}>
+        <Box sx={{ width: "100%", background: (theme) => theme.palette.background.default, p: 2 }}>
           <Stack direction="row" alignItems="center" spacing={2}>
             <Avatar>A</Avatar>
             <Box>
@@ -87,21 +94,20 @@ const Sidebar: FC<SidebarProps> = ({ open, onClose }) => {
           </Stack>
         </Box>
 
-        <Box sx={{ width: 300, bgcolor: "#F9F9F9" }}>
+        <Box sx={{ width: 300 }}>
           <List>
             {menuItems.map(({ text, icon }) => (
               <ListItem
                 key={text}
                 sx={{
-                  bgcolor: "#fff",
+                  background: (theme) => theme.palette.background.default,
                   mb: 0.5,
-                  borderRadius: 2,
-                  "&:hover": { bgcolor: "#F3F3F3" },
+                  "&:hover": { opacity: 0.7 },
                 }}
               >
-                <ListItemIcon sx={{ color: "#000" }}>{icon}</ListItemIcon>
-                <ListItemText primary={text} sx={{ color: "#000" }} />
-                <ChevronRightIcon sx={{ color: "#ccc" }} />
+                <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemText primary={text} />
+                <ChevronRightIcon />
               </ListItem>
             ))}
           </List>
@@ -113,46 +119,43 @@ const Sidebar: FC<SidebarProps> = ({ open, onClose }) => {
               <ListItem
                 key={text}
                 sx={{
-                  bgcolor: "#fff",
+                  background: (theme) => theme.palette.background.default,
                   mb: 0.5,
-                  borderRadius: 2,
-                  "&:hover": { bgcolor: "#F3F3F3" },
+                  "&:hover": { opacity: 0.7 },
                 }}
               >
-                <ListItemIcon sx={{ color: "#000" }}>{icon}</ListItemIcon>
-                <ListItemText primary={text} sx={{ color: "#000" }} />
-                <ChevronRightIcon sx={{ color: "#ccc" }} />
+                <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemText primary={text} />
+                <ChevronRightIcon />
               </ListItem>
             ))}
 
             <ListItem onClick={() => setLangModalOpen(true)}
               sx={{
-                bgcolor: "#fff",
+                background: (theme) => theme.palette.background.default,
                 mb: 0.5,
-                borderRadius: 2,
                 cursor: "pointer",
-                "&:hover": { bgcolor: "#F3F3F3" },
+                "&:hover": { opacity: 0.7 },
               }}>
-              <ListItemIcon sx={{ color: "#000" }}>
+              <ListItemIcon>
                 <LanguageIcon />
               </ListItemIcon>
-              <ListItemText primary={locale.appLanguage} sx={{ color: "#000" }} />
-              <ChevronRightIcon sx={{ color: "#ccc" }} />
+              <ListItemText primary={locale.appLanguage} />
+              <ChevronRightIcon />
             </ListItem>
 
             <ListItem onClick={toggleDarkMode}
               sx={{
-                bgcolor: "#fff",
+                background: (theme) => theme.palette.background.default,
                 mb: 0.5,
-                borderRadius: 2,
                 cursor: "pointer",
-                "&:hover": { bgcolor: "#F3F3F3" },
+                "&:hover": { opacity: 0.7 },
               }}>
-              <ListItemIcon sx={{ color: "#000" }}>
-                {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
+              <ListItemIcon>
+                {darkMode === "light" ? <DarkModeIcon /> : <LightModeIcon />}
               </ListItemIcon>
-              <ListItemText primary={darkMode ? locale.lightModeLabel : locale.darkModeLabel} sx={{ color: "#000" }} />
-              <ChevronRightIcon sx={{ color: "#ccc" }} />
+              <ListItemText primary={darkMode === "light" ? locale.darkModeLabel : locale.lightModeLabel} />
+              <ChevronRightIcon />
             </ListItem>
           </List>
         </Box>

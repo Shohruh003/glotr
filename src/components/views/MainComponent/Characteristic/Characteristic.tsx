@@ -74,7 +74,6 @@ const Characteristic: FC = () => {
       <Card
         sx={{
           maxWidth: "100%",
-          borderRadius: 2,
           boxShadow: 3,
           mx: "auto",
         }}
@@ -134,14 +133,14 @@ const Characteristic: FC = () => {
               fullWidth
               variant="contained"
               color="error"
-              sx={{ mt: 2, borderRadius: 2, flex: 1 }}
+              sx={{ mt: 2, flex: 1 }}
               disabled={product.stock !== "yes"}
               onClick={() => setOrderOpen(true)}
             >
               {locale.purchaseLabel}
             </Button>
 
-            <IconButton sx={{ mt: 2, bgcolor: "#fee", borderRadius: 2, px: 2 }}>
+            <IconButton sx={{ mt: 2, bgcolor: "#fee", px: 2 }}>
               <TextsmsOutlinedIcon color="error" />
             </IconButton>
           </Stack>
@@ -152,11 +151,9 @@ const Characteristic: FC = () => {
       <Card
         sx={{
           maxWidth: "100%",
-          borderRadius: 2,
           boxShadow: 3,
           mt: 3,
           mx: "auto",
-          margin: "10px",
           pb: 2
         }}
       >
@@ -169,9 +166,10 @@ const Characteristic: FC = () => {
               {visibleCharacteristics.map((char, index) => (
                 <TableRow
                   key={index}
-                  sx={{
-                    backgroundColor: index % 2 === 0 ? "#f5f5f5" : "white",
-                  }}
+                  // sx={{
+                  //   backgroundColor: index % 2 === 0 ? "#f5f5f5" : "white",
+                  // }}
+                  sx={{background: (theme) => theme.palette.background.default}}
                 >
                   <TableCell sx={{ fontWeight: "bold" }}>
                     {char.label}
@@ -192,6 +190,7 @@ const Characteristic: FC = () => {
             justifyContent: "center",
             alignItems: "center",
             gap: 1,
+            color: (theme) => theme.palette.primary.main
           }}
         >
           {showAll ? locale.hideLabel : locale.showAllLabel}{" "}

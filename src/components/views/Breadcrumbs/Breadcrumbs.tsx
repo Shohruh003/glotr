@@ -31,11 +31,11 @@ const BreadcrumbsNav = () => {
         const translatedName = getTranslatedName(value);
 
         return isLast ? (
-          <Typography color="text.primary" key={to}>
+          <Typography sx={{color: (theme) => theme.palette.text.primary}} key={to}>
             {translatedName}
           </Typography>
         ) : (
-          <Link component={RouterLink} to={to} underline="hover" key={to}>
+          <Link component={RouterLink} sx={{color: (theme) => theme.palette.text.primary}} to={to} underline="hover" key={to}>
             {translatedName}
           </Link>
         );

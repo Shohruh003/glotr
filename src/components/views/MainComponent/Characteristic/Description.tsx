@@ -46,7 +46,6 @@ const Description: FC = () => {
       <Card
         sx={{
           maxWidth: "100%",
-          borderRadius: 2,
           boxShadow: 3,
           mx: "auto",
         }}
@@ -68,6 +67,7 @@ const Description: FC = () => {
               justifyContent: "center",
               alignItems: "center",
               gap: 1,
+              color: (theme) => theme.palette.primary.main,
             }}
           >
             {showAll ? locale.hideLabel : locale.showAllLabel}{" "}

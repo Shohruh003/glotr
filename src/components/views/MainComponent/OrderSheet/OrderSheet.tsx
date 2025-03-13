@@ -23,8 +23,8 @@ const OrderSheet: FC<IOrderSheetProps> = ({ open, onClose }) => {
 const [orderDoneOpen, setOrderDoneOpen] = useState(false); 
 
 const ConfirmButton = () => {
-    onClose(); // OrderSheet'ni yopish
-    setTimeout(() => setOrderDoneOpen(true), 300); // OrderSheet yopilgandan keyin OrderSheetDone'ni ochish
+    onClose();
+    setTimeout(() => setOrderDoneOpen(true), 300);
   };
   
   return (
@@ -37,7 +37,7 @@ const ConfirmButton = () => {
           alignItems='center'
           sx={{
             padding: "16px 16px 16px 24px",
-            background: "#F5F6F8",
+            background: (theme) => theme.palette.background.default,
           }}
         >
           <Typography variant="h6">{locale.orderLabel}</Typography>
@@ -69,7 +69,7 @@ const ConfirmButton = () => {
             fullWidth
             variant="contained"
             color="error"
-            sx={{ borderRadius: 2, mb: 1 }}
+            sx={{ mb: 1 }}
             onClick={ConfirmButton}
           >
             {locale.confirmButtonLabel}
@@ -78,7 +78,9 @@ const ConfirmButton = () => {
           <Button
             fullWidth
             variant="outlined"
-            sx={{ borderRadius: 2 }}
+            sx={{
+              color: (theme) => theme.palette.primary.main,
+             }}
             onClick={onClose}
           >
             {locale.cancelButtonLabel}

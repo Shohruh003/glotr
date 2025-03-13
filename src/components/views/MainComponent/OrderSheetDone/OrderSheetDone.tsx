@@ -73,7 +73,7 @@ const OrderSheetDone: FC<IOrderSheetDoneProps> = ({ open, onClose }) => {
           alignItems="center"
           sx={{
             padding: "16px 16px 16px 24px",
-            background: "#F5F6F8",
+            background: (theme) => theme.palette.background.default,
             borderBottom: "1px solid #ddd",
           }}
         >
@@ -91,12 +91,12 @@ const OrderSheetDone: FC<IOrderSheetDoneProps> = ({ open, onClose }) => {
             spacing={2}
             alignItems="center"
             mb={2}
-            sx={{ background: "#F5F6F8", borderRadius: 2, p: 2 }}
+            sx={{ background: (theme) => theme.palette.background.default, p: 2 }}
           >
             <img
               src={Image}
               alt="Company Logo"
-              style={{ width: 50, height: 50, borderRadius: 2 }}
+              style={{ width: 50, height: 50 }}
             />
             <Box>
               <Typography fontWeight={600}>E-bidet Uzbekistan</Typography>
@@ -109,8 +109,7 @@ const OrderSheetDone: FC<IOrderSheetDoneProps> = ({ open, onClose }) => {
           
           <Box
             sx={{
-              background: "#F5F6F8",
-              borderRadius: 2,
+              background: (theme) => theme.palette.background.default,
               padding: 2,
               textAlign: "center",
               mb: 2,
@@ -130,23 +129,22 @@ const OrderSheetDone: FC<IOrderSheetDoneProps> = ({ open, onClose }) => {
               mt: 2,
               mb: 4,
               border: "1px solid #E0E0E0",
-              borderRadius: 2,
               overflow: "hidden",
             }}
           >
             {[
               {
-                icon: <FavoriteBorderIcon sx={{ color: "#374151" }} />,
+                icon: <FavoriteBorderIcon sx={{color: (theme) => theme.palette.primary.main}} />,
                 label: locale.companyLabel,
                 value: "E-bidet Uzbekistan",
               },
               {
-                icon: <LocationOnIcon sx={{ color: "#374151" }} />,
+                icon: <LocationOnIcon sx={{color: (theme) => theme.palette.primary.main}} />,
                 label: locale.addressLabel,
                 value: "г.Ташкент, ул. Саларская 35 В две строки",
               },
               {
-                icon: <AccessTimeIcon sx={{ color: "#374151" }} />,
+                icon: <AccessTimeIcon sx={{color: (theme) => theme.palette.primary.main}} />,
                 label: locale.workingHours,
                 value: (
                   <Link href="#" sx={{ color: "red", fontWeight: 600 }}>
@@ -155,12 +153,12 @@ const OrderSheetDone: FC<IOrderSheetDoneProps> = ({ open, onClose }) => {
                 ),
               },
               {
-                icon: <PhoneIcon sx={{ color: "#374151" }} />,
+                icon: <PhoneIcon sx={{color: (theme) => theme.palette.primary.main}} />,
                 label: locale.phoneNumber,
                 value: "+998 90 900 90 90",
               },
               {
-                icon: <LanguageIcon sx={{ color: "#374151" }} />,
+                icon: <LanguageIcon sx={{color: (theme) => theme.palette.primary.main}} />,
                 label: locale.websiteLabel,
                 value: (
                   <Link
@@ -199,7 +197,7 @@ const OrderSheetDone: FC<IOrderSheetDoneProps> = ({ open, onClose }) => {
             fullWidth
             variant="contained"
             color="error"
-            sx={{ borderRadius: 2, fontWeight: 600 }}
+            sx={{ fontWeight: 600 }}
             onClick={handleClose}
           >
             Все товары продавца

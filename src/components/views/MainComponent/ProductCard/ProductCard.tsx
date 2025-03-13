@@ -40,7 +40,6 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
     <Card
       sx={{
         width: 170,
-        borderRadius: 3,
         boxShadow: 2,
         paddingTop: 4,
         position: "relative",

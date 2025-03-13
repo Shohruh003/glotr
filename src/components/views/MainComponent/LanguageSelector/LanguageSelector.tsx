@@ -31,7 +31,7 @@ const LanguageSheet: FC<{ open: boolean; onClose: () => void }> = ({ open, onClo
     return (
       <Drawer anchor="bottom" open={open} onClose={onClose}>
         <Box sx={{ width: "100%", borderRadius: "12px 12px 0 0", overflow: "hidden" }}>
-          <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ padding: "16px", background: "#fff", borderBottom: "1px solid #ddd" }}>
+          <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ padding: "16px", borderBottom: "1px solid #ddd", background: (theme) => theme.palette.background.default }}>
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>{locale.changeLanguage}</Typography>
             <IconButton onClick={onClose}>  
               <CloseIcon />

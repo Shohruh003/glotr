@@ -17,10 +17,10 @@ const Header: FC = () => {
   };
 
   return (
-    <Box boxShadow={2} p={1} sx={styles.header}>
+    <Box boxShadow={2} p={1} sx={{ ...styles.header, background: (theme) => theme.palette.primary.light }}>
       <Stack direction="row" alignItems="center" spacing={2} mb={3}>
         <Box sx={{ cursor: "pointer" }} onClick={toggleDrawer(true)}>
-          <MenuIcon />
+          <MenuIcon sx={{color: (theme) => theme.palette.primary.main}} />
         </Box>
 
         <TextField
