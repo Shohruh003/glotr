@@ -200,7 +200,7 @@ const OrderSheetDone: FC<IOrderSheetDoneProps> = ({ open, onClose }) => {
             sx={{ fontWeight: 600 }}
             onClick={handleClose}
           >
-            Все товары продавца
+            {locale.confirmButtonLabel}
           </Button>
         </Box>
       </Box>
