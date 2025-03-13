@@ -4,7 +4,7 @@ const products: IProduct[] = [
   {
     id: 1,
     price: 100,
-    name: "Knife Sharpener Tool Professional",
+    name: "Apple M1",
     image: "https://www.foodstoreint.co.uk/images/brands2.png",
     stock: "yes",
     store: "Media Park",
@@ -25,7 +25,7 @@ const products: IProduct[] = [
   {
     id: 2,
     price: 200,
-    name: "Knife Sharpener Tool Professional",
+    name: "Samsung A55",
     image: "https://www.foodstoreint.co.uk/images/brands2.png",
     stock: "no",
     store: "Media Park",
@@ -46,7 +46,7 @@ const products: IProduct[] = [
   {
     id: 3,
     price: 300,
-    name: "Knife Sharpener Tool Professional",
+    name: "Redmi Not 11",
     image: "https://www.foodstoreint.co.uk/images/brands2.png",
     stock: "yes",
     store: "Media Park",
@@ -67,7 +67,7 @@ const products: IProduct[] = [
   {
     id: 4,
     price: 7400,
-    name: "Knife Sharpener Tool Professional",
+    name: "Iphone XR",
     image: "https://www.foodstoreint.co.uk/images/brands2.png",
     stock: "yes",
     store: "Media Park",
@@ -88,7 +88,7 @@ const products: IProduct[] = [
   {
     id: 5,
     price: 6000,
-    name: "Knife Sharpener Tool Professional",
+    name: "Samnung S22",
     image: "https://www.foodstoreint.co.uk/images/brands2.png",
     stock: "yes",
     store: "Media Park",
@@ -109,7 +109,7 @@ const products: IProduct[] = [
   {
     id: 6,
     price: 3500,
-    name: "Knife Sharpener Tool Professional",
+    name: "Iphone 7+",
     image: "https://www.foodstoreint.co.uk/images/brands2.png",
     stock: "yes",
     store: "Media Park",
@@ -130,7 +130,7 @@ const products: IProduct[] = [
   {
     id: 7,
     price: 9000,
-    name: "Knife Sharpener Tool Professional",
+    name: "Samsung a32",
     image: "https://www.foodstoreint.co.uk/images/brands2.png",
     stock: "yes",
     store: "Media Park",
@@ -151,7 +151,7 @@ const products: IProduct[] = [
   {
     id: 8,
     price: 12300,
-    name: "Knife Sharpener Tool Professional",
+    name: "Macbook Air Pro",
     image: "https://www.foodstoreint.co.uk/images/brands2.png",
     stock: "yes",
     store: "Media Park",
