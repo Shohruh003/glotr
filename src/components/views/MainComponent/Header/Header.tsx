@@ -8,7 +8,11 @@ import Locale from "./locale";
 import useLocale from "../../../../hooks/useLocale";
 import BreadcrumbsNav from "../../Breadcrumbs/Breadcrumbs";
 
-const Header: FC = () => {
+interface HeaderProps {
+  onSearch: (query: string) => void;
+}
+
+const Header: FC<HeaderProps> = ({ onSearch }) => {
   const [open, setOpen] = useState(false);
   const locale = useLocale(Locale);
 
@@ -28,6 +32,7 @@ const Header: FC = () => {
           placeholder={locale.searchLabel}
           size="small"
           sx={{ flex: 1 }}
+          onChange={(e) => onSearch(e.target.value)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

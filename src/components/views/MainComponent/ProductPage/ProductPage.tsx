@@ -13,7 +13,7 @@ const ProductPage = () => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Header />
+       <Header onSearch={() => {}} />
       <Tabs
         value={tabIndex}
         onChange={(_, newIndex) => setTabIndex(newIndex)}

@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { useStores } from "../../../../hooks/useStores";
 import { Box, Container } from "@mui/material";
@@ -8,6 +8,7 @@ import Loader from "../../../common/Loader";
 
 const Home: FC = observer(() => {
   const { productStore, postStore } = useStores();
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     productStore.fetchProducts();
@@ -18,9 +19,13 @@ const Home: FC = observer(() => {
     return <Loader onLoad={true} />;
   }
 
+  const filteredProducts = productStore.products.filter((product) =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <Box sx={{background: (theme) => theme.palette.background.default}}> 
-      <Header />
+      <Header onSearch={setSearchQuery} />
       <Container maxWidth="md" sx={{color: (theme) => theme.palette.text.primary}}>
         <Box
           component="ul"
@@ -35,12 +40,11 @@ const Home: FC = observer(() => {
             },
           }}
         >
-          {productStore.products.map((product) => (
+          {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </Box>
       </Container>
-      ;
     </Box>
   );
 });
